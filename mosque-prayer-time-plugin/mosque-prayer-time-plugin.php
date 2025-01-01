@@ -454,7 +454,7 @@ function mpt_check_github_update($transient) {
     // Define your plugin information
     $plugin_file = plugin_basename(__FILE__);
     $plugin_slug = 'muslim-prayer-time';
-    $github_repo = 'your-username/your-plugin-repo';
+    $github_repo = 'SmAshiqur/prayer-times';
     $github_api_url = "https://api.github.com/repos/{$github_repo}/releases/latest";
 
     // Make an API call to GitHub
@@ -492,7 +492,7 @@ function mpt_github_plugin_details($res, $action, $args) {
         return $res;
     }
 
-    $github_repo = 'your-username/your-plugin-repo';
+    $github_repo = 'SmAshiqur/prayer-times';
     $github_api_url = "https://api.github.com/repos/{$github_repo}/releases/latest";
 
     // Make an API call to GitHub
@@ -514,7 +514,7 @@ function mpt_github_plugin_details($res, $action, $args) {
         'slug' => 'muslim-prayer-time',
         'version' => $release_data['tag_name'],
         'author' => '<a href="https://masjidsolutions.net">Masjid Solutions</a>',
-        'homepage' => 'https://github.com/your-username/your-plugin-repo',
+        'homepage' => 'https://github.com/SmAshiqur/prayer-times',
         'download_link' => $release_data['zipball_url'],
         'sections' => array(
             'description' => 'Accurate prayer timings for all world timezones, ensuring seamless scheduling for users worldwide.',
@@ -524,4 +524,5 @@ function mpt_github_plugin_details($res, $action, $args) {
 
     return $res;
 }
+
 

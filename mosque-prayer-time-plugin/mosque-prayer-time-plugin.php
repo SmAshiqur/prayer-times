@@ -3,7 +3,7 @@
  * Plugin Name: Mosque Prayer Time Plugin
  * Plugin URI: https://wordpress.org/plugins/muslim-prayer-time/
  * Description: Accurate prayer timings for all world timezones, ensuring seamless scheduling for users worldwide.
- * Version: 1.0.0
+ * Version: 1.2.26
  * Requires at least: 6.4.1
  * Requires PHP: 7.2
  * Author: Masjid Solutions
@@ -441,7 +441,7 @@ class Mosque_Prayer_Time_Plugin {
     
 }
 
-new Mosque_Prayer_Time_Plugin();
+
 
 
 new Mosque_Prayer_Time_Plugin();
@@ -471,7 +471,7 @@ function mpt_check_github_update($transient) {
     }
 
     $new_version = $release_data['tag_name'];
-    $current_version = '1.0.0'; // Current version of your plugin
+    $current_version = '1.2.26'; // Current version of your plugin
 
     // Check if the new version is greater than the current version
     if (version_compare($current_version, $new_version, '<')) {
@@ -524,5 +524,3 @@ function mpt_github_plugin_details($res, $action, $args) {
 
     return $res;
 }
-
-

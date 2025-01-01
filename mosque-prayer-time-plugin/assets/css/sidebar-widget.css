@@ -1,0 +1,52 @@
+.mosque-prayer-sidebar {
+    position: fixed;
+    right: -92px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    background-color: #6f42c1;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.mosque-prayer-sidebar:hover {
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.prayer-times-sidebar-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.prayer-times-sidebar-content {
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.prayer-times-sidebar-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prayer-times-sidebar-content th,
+.prayer-times-sidebar-content td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.prayer-times-sidebar-content th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}

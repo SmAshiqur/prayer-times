@@ -1,0 +1,277 @@
+/* Footer-specific styles */
+.prayer-times-footer {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    width: 406px;
+    width: 25%;
+    z-index: 9999;
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.prayer-times-footer-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #00324c;
+    color: white;
+    font-weight: bold;
+    border-radius: 2px 2px 0 0;
+}
+
+.prayer-times-footer-toggle {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 10px;
+}
+
+.prayer-times-footer-content {
+    display: none;
+    padding: 0px;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+}
+
+.prayer-times-footer-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prayer-times-footer-table th,
+.prayer-times-footer-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.prayer-times-footer-table th {
+    background-color: #5c9abb;
+    color: white;
+    text-transform: uppercase;
+}
+
+.prayer-times-footer-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.prayer-times-footer-table tr:hover {
+    background-color: #f1f1f1;
+}
+/* Sidebar-specific styles */
+.prayer-times-sidebar {
+    transform: none;
+    padding: 0.6rem 0.5rem;
+    font-size: 1rem;
+    width: auto;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    border-radius: 0;
+    position: fixed;
+    right: 37px;
+    top: 32%;
+    font-weight: 600;
+    background-color: #ffffff;
+    color: white;
+    z-index: 9999;
+}
+
+.prayer-times-sidebar-header {
+    transform: rotate(-90deg) translateY(-50%);
+    padding: .6rem .5rem;
+    background-color: #00324c;
+    color: white;
+    font-size: 1rem;
+    width: auto;
+    display: inline-flex;
+    border-radius: 0;
+    position: fixed;
+    right: -105px;
+    top: 50%;
+    font-weight: 600;
+    gap: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 4px;
+}
+
+
+.prayer-times-sidebar-content {
+    display: none;
+    padding: 10px;
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.prayer-times-sidebar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prayer-times-sidebar-table th,
+.prayer-times-sidebar-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.prayer-times-sidebar-table th {
+    background-color: #00324c;
+    color: white;
+    text-transform: uppercase;
+}
+
+.prayer-times-sidebar-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.prayer-times-sidebar-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+
+
+.prayer-time-body-widget {
+    font-family: 'Arial', sans-serif;
+    color: #2c2c2c;
+    text-align: center;
+    padding: 0px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 20px auto;
+    align-items: center;
+}
+
+.prayer-time-header p {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.prayer-time-body-widget.vertical .prayer-time-header p{
+    color: #373737;
+} 
+
+.prayer-time-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0px;
+}
+
+.prayer-time-item {
+    text-align: center;
+    width: 150px;
+    padding: 0px;
+}
+
+.prayer-time-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.prayer-time-info {
+    margin-top: 10px;
+}
+
+.prayer-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1f1f1f;
+    margin-bottom: 5px;
+}
+
+.prayer-time {
+    font-size: 14px;
+    color: #1f1f1f;
+}
+
+
+
+.prayer-time-body-widget.vertical {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding-top: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.prayer-time-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.prayer-time-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.prayer-time-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.prayer-time-table th,
+.prayer-time-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.prayer-time-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.prayer-time-table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.jummah-times {
+    font-size: 14px;
+}
+
+
+
+.shortcode-instructions {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.shortcode-instructions code {
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.widget-preview h2 {
+    margin-bottom: 10px;
+}
+
+.widget-preview > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+}

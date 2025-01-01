@@ -1,0 +1,98 @@
+/* styles.css */
+
+#prayer-time-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    width: 406px;
+}
+
+#prayer-time-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#prayer-time-toggle {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    background-color: #ddd;
+}
+
+#prayer-time-text {
+    padding: 10px;
+}
+
+#prayer-time-content {
+    display: none;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+/* table */
+
+#prayer-time-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#prayer-time-table th, #prayer-time-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#prayer-time-content {
+    text-align: justify;
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: justify;
+    padding: 8px;
+  }
+
+
+  .form-control.form-control-search-location {
+    outline: 2px solid #00324c;
+    border-radius: 20px;
+    height: auto;
+    width: 100%;
+    border: 3px solid #e4dede;
+    font-size: 18px;
+  }
+  .form-control.form-control-search-location {
+    outline: 3px solid #00324c;
+    height: 55px;
+    border: 4px solid #e4dede;
+  }
+
+
+
+  select.form-control.pt-calculate-method-dropdown-js{
+    line-height: 2;
+    color: #2c3338;
+    border-color: #8c8f94;
+    box-shadow: none;
+    border-radius: 3px;
+    padding: 0 24px 0 8px;
+    min-height: 30px;
+    max-width: 25rem;
+    background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 5px top 55%;
+    background-size: 16px 16px;
+    cursor: pointer;
+    vertical-align: middle;
+  }

@@ -1,0 +1,125 @@
+/* Sticky Footer Styles */
+
+body {
+    margin-bottom: 150px; /* Adjust this value based on your widget height */
+}
+
+/* Collapsed State Styles */
+.prayer-times-floating-wrapper.collapsed {
+    height: 50px; /* Set the collapsed height as needed */
+    overflow: hidden;
+}
+
+/* Expanded State Styles */
+.prayer-times-floating-wrapper.expanded {
+    height: auto;
+}
+
+/* Overall Wrapper */
+.prayer-times-floating-wrapper {
+    width: 406px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    border: 1px solid #ddd;
+    /* border-radius: 8px; */
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: height 0.3s ease-in-out;
+}
+
+/* Header */
+.prayer-times-head {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.prayer-times-header-text{
+    padding: 10px;
+}
+
+.prayer-times-head h3 {
+    margin: 0;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+}
+
+/* Body */
+.prayer-times-body {
+    padding: 0px;
+    display: none;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+/* Table Header Styles */
+.table thead {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Table Header Cell Styles */
+.table th {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Table Body Styles */
+.table tbody {
+    background-color: #f9f9f9;
+}
+
+/* Table Row Styles */
+.table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table Cell Styles */
+.table td {
+    padding: 10px;
+}
+
+/* Jummah Row Styles */
+/* .jummah-row {
+    background-color: #ffc107;
+} */
+
+/* Text Danger Styles */
+.text-danger {
+    color: #dc3545;
+}
+
+/* Toggle Icon Styles */
+.prayer-times-toggle-icon {
+    float: right;
+    cursor: pointer;
+}
+
+/* Chevron Icon Styles */
+.fa-chevron-up {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Rotate Icon on Toggle */
+.prayer-times-floating-wrapper.collapsed .fa-chevron-up {
+    transform: rotate(0);
+}
+
+
+#prayer-time-toggle-secure-api {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+}

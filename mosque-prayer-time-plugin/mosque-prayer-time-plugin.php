@@ -442,3 +442,86 @@ class Mosque_Prayer_Time_Plugin {
 }
 
 new Mosque_Prayer_Time_Plugin();
+
+
+new Mosque_Prayer_Time_Plugin();
+add_filter('site_transient_update_plugins', 'mpt_check_github_update');
+function mpt_check_github_update($transient) {
+    if (empty($transient->checked)) {
+        return $transient;
+    }
+
+    // Define your plugin information
+    $plugin_file = plugin_basename(__FILE__);
+    $plugin_slug = 'muslim-prayer-time';
+    $github_repo = 'your-username/your-plugin-repo';
+    $github_api_url = "https://api.github.com/repos/{$github_repo}/releases/latest";
+
+    // Make an API call to GitHub
+    $response = wp_remote_get($github_api_url, array('timeout' => 10));
+
+    if (is_wp_error($response)) {
+        return $transient; // Return unchanged transient on error
+    }
+
+    $release_data = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (empty($release_data['tag_name'])) {
+        return $transient; // Return unchanged transient if no version tag
+    }
+
+    $new_version = $release_data['tag_name'];
+    $current_version = '1.0.0'; // Current version of your plugin
+
+    // Check if the new version is greater than the current version
+    if (version_compare($current_version, $new_version, '<')) {
+        $transient->response[$plugin_file] = (object) array(
+            'slug' => $plugin_slug,
+            'new_version' => $new_version,
+            'package' => $release_data['zipball_url'], // GitHub's zipball URL for the release
+            'url' => $release_data['html_url'], // Release page URL
+        );
+    }
+
+    return $transient;
+}
+
+add_filter('plugins_api', 'mpt_github_plugin_details', 20, 3);
+function mpt_github_plugin_details($res, $action, $args) {
+    if ($action !== 'plugin_information' || $args->slug !== 'muslim-prayer-time') {
+        return $res;
+    }
+
+    $github_repo = 'your-username/your-plugin-repo';
+    $github_api_url = "https://api.github.com/repos/{$github_repo}/releases/latest";
+
+    // Make an API call to GitHub
+    $response = wp_remote_get($github_api_url, array('timeout' => 10));
+
+    if (is_wp_error($response)) {
+        return $res; // Return default response on error
+    }
+
+    $release_data = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (empty($release_data)) {
+        return $res; // Return default response if no data
+    }
+
+    // Populate plugin details
+    $res = (object) array(
+        'name' => 'Mosque Prayer Time Plugin',
+        'slug' => 'muslim-prayer-time',
+        'version' => $release_data['tag_name'],
+        'author' => '<a href="https://masjidsolutions.net">Masjid Solutions</a>',
+        'homepage' => 'https://github.com/your-username/your-plugin-repo',
+        'download_link' => $release_data['zipball_url'],
+        'sections' => array(
+            'description' => 'Accurate prayer timings for all world timezones, ensuring seamless scheduling for users worldwide.',
+            'changelog' => !empty($release_data['body']) ? $release_data['body'] : 'No changelog available.',
+        ),
+    );
+
+    return $res;
+}
+

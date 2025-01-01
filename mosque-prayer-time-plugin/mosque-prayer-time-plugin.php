@@ -466,21 +466,30 @@ function mpt_check_github_update($transient) {
 
     $release_data = json_decode(wp_remote_retrieve_body($response), true);
 
-    if (empty($release_data['tag_name'])) {
-        return $transient; // Return unchanged transient if no version tag
+    if (empty($release_data['tag_name']) || empty($release_data['assets'])) {
+        error_log('GitHub API Response Missing Tag Name or Assets');
+        return $transient;
     }
 
-    $new_version = $release_data['tag_name'];
-    $current_version = '1.2.26'; // Current version of your plugin
+    $new_version = ltrim($release_data['tag_name'], 'v'); // Strip 'v' if present
+    $current_version = '1.2.26'; // Match this to the current plugin version in your header
 
-    // Check if the new version is greater than the current version
+    error_log("Current Version: $current_version, New Version: $new_version");
+
     if (version_compare($current_version, $new_version, '<')) {
+        // Use the browser_download_url from the first asset
+        $download_url = $release_data['assets'][0]['browser_download_url'];
+
         $transient->response[$plugin_file] = (object) array(
             'slug' => $plugin_slug,
             'new_version' => $new_version,
-            'package' => $release_data['zipball_url'], // GitHub's zipball URL for the release
-            'url' => $release_data['html_url'], // Release page URL
+            'package' => $download_url, // URL to download the new version
+            'url' => $release_data['html_url'], // GitHub release page URL
         );
+
+        error_log('Plugin Update Available');
+    } else {
+        error_log('No Update Required');
     }
 
     return $transient;

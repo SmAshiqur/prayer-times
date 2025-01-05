@@ -7,7 +7,7 @@ class Mosque_Info_Input {
         register_setting('mosque_prayer_time_settings', 'mosque_prayer_time_mosque_slug');
 
         add_settings_field('mosque_prayer_time_mosque_name', 'Name of the Mosque', array('Mosque_Info_Input', 'text_input_callback'), 'mosque_prayer_time_settings', 'mosque_prayer_time_section', array('field_name' => 'mosque_prayer_time_mosque_name', 'is_secure_api_activated' => self::is_secure_api_activated()));
-        add_settings_field('mosque_prayer_time_mosque_slug', 'Slug of the Mosque', array('Mosque_Info_Input', 'text_input_callback'), 'mosque_prayer_time_settings', 'mosque_prayer_time_section', array('field_name' => 'mosque_prayer_time_mosque_slug', 'is_secure_api_activated' => self::is_secure_api_activated()));
+        add_settings_field('mosque_prayer_time_mosque_slug', 'Shortcode', array('Mosque_Info_Input', 'text_input_callback'), 'mosque_prayer_time_settings', 'mosque_prayer_time_section', array('field_name' => 'mosque_prayer_time_mosque_slug', 'is_secure_api_activated' => self::is_secure_api_activated()));
 
         //  JavaScript for validation
         add_action('admin_enqueue_scripts', array('Mosque_Info_Input', 'enqueue_validation_script'));

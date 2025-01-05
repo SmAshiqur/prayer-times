@@ -3,7 +3,7 @@
  * Plugin Name: Mosque Prayer Time Plugin
  * Plugin URI: https://wordpress.org/plugins/muslim-prayer-time/
  * Description: Accurate prayer timings for all world timezones, ensuring seamless scheduling for users worldwide.
- * Version: 1.2.26
+ * Version: 1.0.0
  * Requires at least: 6.4.1
  * Requires PHP: 7.2
  * Author: Masjid Solutions
@@ -360,12 +360,12 @@ class Mosque_Prayer_Time_Plugin {
             ?>
             <div class="prayer-time-body-widget horizontal">
                 <?php if (!empty($prayer_array->jummahTimes)): ?>
-                    <div class="jummah-time-header" style="background-color: #002855; color: white; padding: 10px; text-align: center; font-weight: bold; font-size: 16px;">
+                    <div class="jummah-time-header">
                         JUMMAH STARTS AT <?php echo esc_html($prayer_array->jummahTimes[0]->jummahTime); ?>
                     </div>
                 <?php endif; ?>
     
-                <div class="prayer-time-header" style="background-color: #5C9ABB; color:rgb(255, 255, 255); padding: 10px; text-align: center; font-size: 16px; font-family: Arial, sans-serif;">
+                <div class="prayer-time-header">
                     <p>Today is <?php echo date('F j, Y'); ?> @ <?php echo esc_html($mosque_name); ?></p>
                 </div>
     
@@ -445,20 +445,35 @@ class Mosque_Prayer_Time_Plugin {
 
 
 new Mosque_Prayer_Time_Plugin();
+
+define('GITHUB_ACCESS_TOKEN', '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'); // Replace with your token
+
+// Function to make authenticated GitHub API requests
+function mpt_make_github_request($url) {
+    $args = array(
+        'timeout' => 10,
+        'headers' => array(
+            'Authorization' => 'Bearer ' . GITHUB_ACCESS_TOKEN, // Include the token
+            'User-Agent' => 'WordPress/' . get_bloginfo('version'),
+        ),
+    );
+    return wp_remote_get($url, $args);
+}
+
+// Update plugins using GitHub
 add_filter('site_transient_update_plugins', 'mpt_check_github_update');
 function mpt_check_github_update($transient) {
     if (empty($transient->checked)) {
         return $transient;
     }
 
-    // Define your plugin information
     $plugin_file = plugin_basename(__FILE__);
     $plugin_slug = 'muslim-prayer-time';
     $github_repo = 'SmAshiqur/prayer-times';
     $github_api_url = "https://api.github.com/repos/{$github_repo}/releases/latest";
 
-    // Make an API call to GitHub
-    $response = wp_remote_get($github_api_url, array('timeout' => 10));
+    // Make an authenticated API call
+    $response = mpt_make_github_request($github_api_url);
 
     if (is_wp_error($response)) {
         return $transient; // Return unchanged transient on error
@@ -472,12 +487,12 @@ function mpt_check_github_update($transient) {
     }
 
     $new_version = ltrim($release_data['tag_name'], 'v'); // Strip 'v' if present
-    $current_version = '1.2.26'; // Match this to the current plugin version in your header
+    $current_version = '1.0.0'; // Match this to the current plugin version in your header
 
     error_log("Current Version: $current_version, New Version: $new_version");
 
-  if (version_compare($current_version, $new_version, '<')) {
-        // Use the browser_download_url from the first asset
+
+    if (version_compare($current_version, $new_version, '<')) {
         $download_url = $release_data['assets'][0]['browser_download_url'];
 
         $transient->response[$plugin_file] = (object) array(
@@ -533,3 +548,31 @@ function mpt_github_plugin_details($res, $action, $args) {
 
     return $res;
 }
+
+// Check API rate limits
+function check_github_api_rate_limit() {
+    $rate_limit_url = 'https://api.github.com/rate_limit';
+    $response = mpt_make_github_request($rate_limit_url); // Use the authenticated function
+
+    if (is_wp_error($response)) {
+        return 'Error checking rate limit';
+    }
+
+    $rate_limit_data = json_decode(wp_remote_retrieve_body($response), true);
+
+    if (isset($rate_limit_data['rate']['limit'])) {
+        $limit = $rate_limit_data['rate']['limit']; // Total allowed requests
+        $remaining_requests = $rate_limit_data['rate']['remaining']; // Remaining requests
+        $reset_time = $rate_limit_data['rate']['reset']; // When the limit resets
+        $reset_time_human = date('Y-m-d H:i:s', $reset_time);
+
+        error_log("GitHub API Rate Limit: $limit");
+        error_log("GitHub API Remaining Requests: $remaining_requests");
+        error_log("GitHub API Rate Limit Resets At: $reset_time_human");
+    } else {
+        error_log('Error fetching rate limit data');
+    }
+}
+
+// Hook to check rate limits
+add_action('admin_init', 'check_github_api_rate_limit');

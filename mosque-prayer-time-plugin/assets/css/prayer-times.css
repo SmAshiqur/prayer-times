@@ -177,7 +177,7 @@
     padding: 0.6rem 1rem;
     border-radius: 4px;
     position: absolute;
-    right: -146px!important;
+    right: -146px;
     gap: 8px;
     top: 50%;
     width: max-content;

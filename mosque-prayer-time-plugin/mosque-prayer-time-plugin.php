@@ -422,7 +422,7 @@ class Mosque_Prayer_Time_Plugin {
                 <?php if (!empty($prayer_array->jummahTimes)): ?>
                     <div class="jummah-times" style="text-align: center; margin-top: 10px; font-weight: normal; font-size:14px;">
                         <?php foreach ($prayer_array->jummahTimes as $jummah): ?>
-                            <p><?php echo esc_html($jummah->jummahTime); ?> - Jummah</p>
+                            <p><?php echo esc_html($jummah->jummahTime); ?> - Jumu'ah</p>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
